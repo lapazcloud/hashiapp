@@ -1,5 +1,10 @@
+---
 kind: pipeline
 name: hashiapp
+
+platform:
+  os: linux
+  arch: amd64
 
 steps:
 - name: mvn
@@ -8,3 +13,9 @@ steps:
   - mvn dependency:resolve
   - mvn verify
   - mvn package
+
+---
+kind: signature
+hmac: c4aca4c351f522baa054b40e31186b2c4b6428e9ea216c712cda2df60f186054
+
+...
