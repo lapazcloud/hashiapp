@@ -51,7 +51,7 @@ data "template_file" "worker" {
 }
 
 resource "digitalocean_droplet" "worker" {
-  count              = 2
+  count              = 3
   name               = "${format("worker-%03d", count.index + 1)}"
   size               = "s-1vcpu-1gb"
   image              = "ubuntu-18-10-x64"

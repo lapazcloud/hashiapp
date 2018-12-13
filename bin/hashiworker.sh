@@ -1,13 +1,10 @@
 #!/bin/bash
 
 apt-get -y update
-apt-get -y install unzip dnsmasq
+apt-get -y install unzip dnsmasq default-jre
+
 # Get variables
 export IP_ADDRESS=$(curl -s http://169.254.169.254/metadata/v1/interfaces/private/0/ipv4/address)
-
-# Install Java
-curl -sSL https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u192-b12/OpenJDK8U-jre_x64_linux_openj9_8u192b12.tar.gz | tar -xz -C /opt/
-ln -s /opt/jdk8u192-b12-jre/bin/java /usr/local/bin/java
 
 # Install Nomad
 curl -sSL https://releases.hashicorp.com/nomad/0.8.6/nomad_0.8.6_linux_amd64.zip > nomad.zip

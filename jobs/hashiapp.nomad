@@ -17,6 +17,7 @@ job "hashiapp" {
         VAULT_TOKEN = ""
         VAULT_ADDR = "http://vault.service.consul:8200"
         DB_HOST = ""
+        DB_NAME = "hashidb"
       }
 
       config {
