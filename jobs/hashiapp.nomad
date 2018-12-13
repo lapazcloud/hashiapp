@@ -10,14 +10,14 @@ job "hashiapp" {
   group "app" {
     count = 1
 
-    env {
-      VAULT_TOKEN = ""
-      VAULT_ADDR = "http://vault.service.consul:8200"
-      DB_HOST = ""
-    }
-
     task "hashiapp" {
       driver = "java"
+
+      env {
+        VAULT_TOKEN = ""
+        VAULT_ADDR = "http://vault.service.consul:8200"
+        DB_HOST = ""
+      }
 
       config {
       	jar_path = "/local/hashiapp-1.0-jar-with-dependencies.jar"
