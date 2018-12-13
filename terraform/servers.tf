@@ -82,6 +82,10 @@ output "nomad-ui" {
   value = "http://${digitalocean_droplet.master.ipv4_address}:4646"
 }
 
+output "vault-ui" {
+  value = "http://${digitalocean_droplet.master.ipv4_address}:8200/ui/"
+}
+
 output "vault-export" {
   value = "export VAULT_ADDR='http://${digitalocean_droplet.master.ipv4_address_private}:8200'"
 }

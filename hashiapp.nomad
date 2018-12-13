@@ -2,18 +2,29 @@ job "hashiapp" {
   datacenters = ["dc1"]
   type = "service"
 
+  update {
+    stagger = "5s"
+    max_parallel = 1
+  }
+
   group "app" {
-    count = 5
+    count = 1
+
+    env {
+      VAULT_TOKEN = ""
+      VAULT_ADDR = "http://vault.service.consul:8200"
+      DB_HOST = ""
+    }
 
     task "hashiapp" {
       driver = "java"
 
       config {
-      	jar_path = "/local/hashiapp-2.0.1-jar-with-dependencies.jar"
+      	jar_path = "/local/hashiapp-1.0-jar-with-dependencies.jar"
       }
 
       artifact {
-        source = "http://192.168.1.103:8000/hashiapp-2.0.1-jar-with-dependencies.jar"
+        source = "https://s3.amazonaws.com/hashiapp-lapazcloud/hashiapp-1.0-jar-with-dependencies.jar"
       }
       
       resources {
