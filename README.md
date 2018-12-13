@@ -42,3 +42,9 @@ vault write database/roles/hashirole \
     default_ttl="1h" \
     max_ttl="24h"
 ```
+
+### Clone the repo on the master server
+
+```
+git clone https://github.com/lapazcloud/hashiapp.git
+```
