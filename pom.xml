@@ -5,7 +5,7 @@
 
   <groupId>hashiapp</groupId>
   <artifactId>hashiapp</artifactId>
-  <version>2.0.1</version>
+  <version>2.0</version>
 
   <dependencies>
     <dependency>
@@ -22,6 +22,16 @@
       <groupId>com.sparkjava</groupId>
       <artifactId>spark-template-velocity</artifactId>
       <version>2.7.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>9.4-1201-jdbc41</version>
+    </dependency>
+    <dependency>
+      <groupId>com.bettercloud</groupId>
+      <artifactId>vault-java-driver</artifactId>
+      <version>3.1.0</version>
     </dependency>
   </dependencies>
 

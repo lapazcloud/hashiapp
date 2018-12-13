@@ -1,11 +1,10 @@
 #!/bin/bash
-set -e
 
 apt-get -y update
-apt-get -y install unzip
+apt-get -y install unzip dnsmasq
 
 # Get variables
-IP_ADDRESS=$(curl -s http://169.254.169.254/metadata/v1/interfaces/public/0/ipv4/address)
+export IP_ADDRESS=$(curl -s http://169.254.169.254/metadata/v1/interfaces/private/0/ipv4/address)
 
 # Install Nomad
 curl -sSL https://releases.hashicorp.com/nomad/0.8.6/nomad_0.8.6_linux_amd64.zip > nomad.zip
@@ -96,7 +95,7 @@ backend "consul" {
   path = "vault"
 }
 listener "tcp" {
-  address = "${IP_ADDRESS}:8200"
+  address = "0.0.0.0:8200"
   tls_disable = 1
 }
 EOL
@@ -118,3 +117,10 @@ EOF
 systemctl enable vault
 systemctl start vault
 
+# DNS settings
+echo "server=/consul/127.0.0.1#8600" > /etc/dnsmasq.d/10-consul
+echo "server=1.1.1.1" > /etc/dnsmasq.d/20-cloudflare
+echo "conf-dir=/etc/dnsmasq.d" >> /etc/dnsmasq.conf
+systemctl stop systemd-resolved
+systemctl disable systemd-resolved
+systemctl restart dnsmasq

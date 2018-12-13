@@ -17,8 +17,7 @@
                 <div class="content has-text-centered is-large">
                     <h1 class="title is-1 is-spaced">La Paz Cloud</h1>
                     <p class="subtitle">Aplicación en Spark</p>
-                    <a href="" class="button is-medium is-link">Ver código fuente</a>
-                    <a href="" class="button is-primary is-medium is-outlined is-inverted">Documentación</a>
+                    <a href="https://github.com/lapazcloud/hashiapp" target="_blank" class="button is-medium is-link">Ver código fuente</a>
                 </div>
             </div>
         </section>
