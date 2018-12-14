@@ -99,6 +99,8 @@ public class Hello {
 			port(4567);
 		}
 
+		model.put("app_version", "v2.0");
+
 		get("/", (req, res) -> new ModelAndView(model, "home.vm"), new VelocityTemplateEngine());
 		get("/version", (req, res) -> "v2.0");
 		get("/health", (req, res) -> "OK");

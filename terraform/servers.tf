@@ -1,4 +1,5 @@
 provider "digitalocean" {}
+provider "cloudflare" {}
 
 provider "aws" {
   region = "us-east-1"
@@ -60,6 +61,38 @@ resource "digitalocean_droplet" "worker" {
   ipv6               = false
   ssh_keys           = ["${data.digitalocean_ssh_key.mykey.fingerprint}"]
   user_data          = "${data.template_file.worker.rendered}"
+}
+
+resource "digitalocean_loadbalancer" "hashilb" {
+  name = "hashilb"
+  region = "nyc3"
+
+  forwarding_rule {
+    entry_port = 80
+    entry_protocol = "http"
+
+    target_port = 9999
+    target_protocol = "http"
+  }
+
+  healthcheck {
+    port = 9999
+    protocol = "tcp"
+  }
+
+  droplet_ids = ["${digitalocean_droplet.worker.*.id}"]
+}
+
+resource "cloudflare_record" "domain" {
+  domain = "lapazcloud.com"
+  name = "@"
+  value = "${digitalocean_loadbalancer.hashilb.ip}"
+  type = "A"
+  ttl = 1
+}
+
+output "load-balancer" {
+  value = "http://${digitalocean_loadbalancer.hashilb.ip}/"
 }
 
 output "db-address" {

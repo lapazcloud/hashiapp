@@ -12,12 +12,13 @@
         <link rel="stylesheet" href="/css/bulma.min.css">
     </head>
     <body>
-        <section class="hero is-medium is-primary is-bold">
+        <section class="hero is-primary is-primary is-bold">
             <div class="hero-body">
                 <div class="content has-text-centered is-large">
-                    <h1 class="title is-1 is-spaced">La Paz Cloud</h1>
+                    <h1 class="title is-1 is-spaced">La Paz Cloud $app_version</h1>
                     <p class="subtitle">Aplicación en Spark</p>
                     <a href="https://github.com/lapazcloud/hashiapp" target="_blank" class="button is-medium is-link">Ver código fuente</a>
+                    <p><small>$server_id</small></p>
                 </div>
             </div>
         </section>
@@ -34,7 +35,6 @@
         <footer class="footer">
             <div class="content has-text-centered has-text-grey-light">
                 <p>Copyright &copy; 2018 La Paz Cloud</p>
-                <small>$server_id</small>
             </div>
         </footer>
     </body>
