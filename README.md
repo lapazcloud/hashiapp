@@ -30,7 +30,7 @@ vault secrets enable database
 vault write database/config/hashidb \
     plugin_name=postgresql-database-plugin \
     allowed_roles="hashirole" \
-    connection_url="postgresql://${USER}:${PASSWORD}@${DB_HOST}:5432/${DB_NAME}" 
+    connection_url="postgresql://${USER}:${PASSWORD}@${DB_HOST}:5432/${DB_NAME}?sslmode=require&ssl=true" 
 
 ```
 

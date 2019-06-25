@@ -17,15 +17,16 @@ job "hashiapp" {
         VAULT_TOKEN = ""
         VAULT_ADDR = "http://vault.service.consul:8200"
         DB_HOST = ""
-        DB_NAME = "hashidb"
+        DB_NAME = "defaultdb?sslmode=require&ssl=true"
+        DB_PORT = 
       }
 
       config {
-      	jar_path = "/local/hashiapp-1.0-jar-with-dependencies.jar"
+      	jar_path = "/local/hashiapp-2.0-jar-with-dependencies.jar"
       }
 
       artifact {
-        source = "https://s3.amazonaws.com/hashiapp-lapazcloud/hashiapp-1.0-jar-with-dependencies.jar"
+        source = "https://github.com/lapazcloud/hashiapp/releases/download/2.0/hashiapp-2.0-jar-with-dependencies.jar"
       }
       
       resources {
