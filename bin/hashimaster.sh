@@ -7,7 +7,7 @@ apt-get -y install unzip dnsmasq
 export IP_ADDRESS=$(curl -s http://169.254.169.254/metadata/v1/interfaces/private/0/ipv4/address)
 
 # Install Nomad
-curl -sSL https://releases.hashicorp.com/nomad/0.8.6/nomad_0.8.6_linux_amd64.zip > nomad.zip
+curl -sSL https://releases.hashicorp.com/nomad/0.9.3/nomad_0.9.3_linux_amd64.zip > nomad.zip
 unzip nomad.zip
 mv nomad /usr/local/bin
 
@@ -49,7 +49,7 @@ systemctl enable nomad
 systemctl start nomad
 
 # Install Consul
-curl -sSL https://releases.hashicorp.com/consul/1.4.0/consul_1.4.0_linux_amd64.zip > consul.zip
+curl -sSL https://releases.hashicorp.com/consul/1.5.1/consul_1.5.1_linux_amd64.zip > consul.zip
 unzip consul.zip
 mv consul /usr/local/bin/
 rm -f consul.zip
@@ -80,7 +80,7 @@ systemctl enable consul
 systemctl start consul
 
 # Install Vault
-curl -sSL https://releases.hashicorp.com/vault/1.0.0/vault_1.0.0_linux_amd64.zip > vault.zip
+curl -sSL https://releases.hashicorp.com/vault/1.1.3/vault_1.1.3_linux_amd64.zip > vault.zip
 unzip vault.zip
 mv vault /usr/local/bin/vault
 rm -f vault.zip
