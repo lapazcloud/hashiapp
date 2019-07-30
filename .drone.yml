@@ -8,7 +8,7 @@ platform:
 
 steps:
 - name: mvn
-  image: maven:3.6.0-jdk-8
+  image: maven:3.6.1-jdk-8
   commands:
   - mvn dependency:resolve
   - mvn verify
@@ -28,7 +28,7 @@ platform:
 
 steps:
 - name: mvn
-  image: maven:3.6.0-jdk-8
+  image: maven:3.6.1-jdk-8
   commands:
   - mvn dependency:resolve
   - mvn verify
